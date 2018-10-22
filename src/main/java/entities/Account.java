@@ -9,12 +9,28 @@ public class Account {
     private Long id;
     @Column(name = "FIRST_NAME")
     private String first_name;
-    @Column(name = "LAST_NAME")
+    @Column(name = "LAST_NAME", nullable = true)
     private String last_name;
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "PASSWORD")
     private String password;
+
+    public Account() {
+    }
+
+    public Account(String first_name, String email, String password) {
+        this.first_name = first_name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Account(String first_name, String last_name, String email, String password) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.password = password;
+    }
 
     public void setId(Long id) {
         this.id = id;
