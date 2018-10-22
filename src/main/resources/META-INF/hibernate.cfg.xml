@@ -7,5 +7,7 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="show_sql">true</property>
+
+        <mapping class="entities.Account"/>
     </session-factory>
 </hibernate-configuration>
