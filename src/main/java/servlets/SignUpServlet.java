@@ -2,6 +2,7 @@ package servlets;
 
 import entities.Account;
 import services.AccountService;
+import utils.HibernateUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +36,7 @@ public class SignUpServlet extends HttpServlet
                     Account account = new Account(first_name, email, password);
                     accountService.add(account);
                 }
+                HibernateUtil.shutdown();
             }
         } catch (Exception e) {e.printStackTrace();}
     }
