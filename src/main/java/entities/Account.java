@@ -1,7 +1,5 @@
 package entities;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,19 +8,16 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "FIRST_NAME")
-    @NotNull
+    @Column(name = "FIRST_NAME", nullable = false)
     private String first_name;
 
-    @Column(name = "LAST_NAME", nullable = true)
+    @Column(name = "LAST_NAME")
     private String last_name;
 
-    @Column(name = "EMAIL", unique = true)
-    @NotNull
+    @Column(name = "EMAIL", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "PASSWORD")
-    @NotNull
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
 
     public Account() {

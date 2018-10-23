@@ -10,9 +10,10 @@
         <property name="hibernate.connection.password">fallout3</property>
         <property name="bytecode.use_reflection_optimizer">true</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="show_sql">true</property>
 
         <mapping class="entities.Account"/>
+        <mapping class="entities.Item"/>
     </session-factory>
 </hibernate-configuration>

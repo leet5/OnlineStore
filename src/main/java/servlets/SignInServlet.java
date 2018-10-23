@@ -3,6 +3,7 @@ package servlets;
 import entities.Account;
 import services.AccountService;
 
+import javax.persistence.NoResultException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,25 +18,18 @@ public class SignInServlet extends HttpServlet {
 
         AccountService accountService = new AccountService();
         try {
-            long id = 0;
-            try {
-                id = accountService.getByEmail(email).getId();
-            } catch (NullPointerException e) {
-            }
-            if (id == 0) {
+            Account account = accountService.getByEmail(email);
+            if (!account.getPassword().equals(password)) {
                 resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                resp.getWriter().println("Account does not exist");
+                resp.getWriter().println("Wrong password");
             } else {
-                Account account = accountService.getByEmail(email);
-                if (!account.getPassword().equals(password)) {
-                    resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                    resp.getWriter().println("Wrong password");
-                } else {
-                    resp.setStatus(HttpServletResponse.SC_OK);
-                    resp.getWriter().println("Success!");
-                    resp.getWriter().println(account);
-                }
+                resp.setStatus(HttpServletResponse.SC_OK);
+                resp.getWriter().println("Success!");
+                resp.getWriter().println(account);
             }
+        } catch (NoResultException nre) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            resp.getWriter().println("Account does not exist");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>ChibaStore</title>
-        <link rel="stylesheet" href="style.css">
+        <title>OnlineStore</title>
+        <link rel="stylesheet" href="index_style.css">
     </head>
     <body>
     <fieldset >
@@ -13,27 +13,28 @@
                     <label>Full Name
                         <span class="required">*</span>
                     </label>
-                    <input type="text" name="first_name" class="field-divided" placeholder="First"/>
+                    <input type="text" name="first_name" class="field-divided" placeholder="First" required>
                     <input type="text" name="last_name" class="field-divided" placeholder="Last"/>
                 </li>
                 <li>
                     <label>Email
                         <span class="required">*</span>
                     </label>
-                    <input type="email" name="email" class="field-long"/>
+                    <input type="email" name="email" class="field-long" required/>
                 </li>
                 <li>
                     <label>Password
                         <span class="required">*</span>
                     </label>
-                    <input type="password" name="password" class="field-long">
+                    <input type="password" name="password" class="field-long" required>
                 </li>
                 <li>
-                    <input type="submit" value="Create account" />
+                    <input type="submit" value="Create account" class="btn_submit disabled"/>
                 </li>
             </ul>
         </form>
     </fieldset>
+
     <fieldset >
         <form action="/signin" method="post">
             <ul class="form-style-1">
@@ -41,13 +42,13 @@
                     <label>Email
                         <span class="required">*</span>
                     </label>
-                    <input type="email" name="email" class="field-long"/>
+                    <input type="email" name="email" class="field-long" required/>
                 </li>
                 <li>
                     <label>Password
                         <span class="required">*</span>
                     </label>
-                    <input type="password" name="password" class="field-long">
+                    <input type="password" name="password" class="field-long" required>
                 </li>
                 <li>
                     <input type="submit" value="Sign in" />
