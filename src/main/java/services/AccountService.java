@@ -2,7 +2,7 @@ package services;
 
 import dao.AccountDAO;
 import entities.Account;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import utils.SessionUtil;
 
@@ -22,6 +22,17 @@ public class AccountService extends SessionUtil implements AccountDAO {
         String sql = "select * from account where id=:id";
         Query query = session.createNativeQuery(sql).addEntity(Account.class);
         query.setParameter("id", id);
+        Account account = (Account) query.getSingleResult();
+        closeTransactionSession();
+        return account;
+    }
+
+    @Override
+    public Account getByEmail(String email) {
+        Session session = openTransactionSession();
+        String sql = "select * from account where email=:email";
+        Query query = session.createNativeQuery(sql).addEntity(Account.class);
+        query.setParameter("email", email);
         Account account = (Account) query.getSingleResult();
         closeTransactionSession();
         return account;

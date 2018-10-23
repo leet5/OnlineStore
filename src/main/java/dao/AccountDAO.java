@@ -9,6 +9,8 @@ public interface AccountDAO {
 
     Account getById(Long id);
 
+    Account getByEmail(String email);
+
     List<Account> getAll();
 
     void update(Account account);
